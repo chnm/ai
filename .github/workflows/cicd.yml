@@ -1,0 +1,43 @@
+name: "[ai.rrchnm.org] Build, Release, Deploy"
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Off the top of the hour: GitHub delays on-the-hour crons the most
+    # (11:38 UTC ≈ 7:38 a.m. EDT nominal; scheduled runs are best-effort).
+    - cron: '38 11 * * 1-5'
+  push:
+    branches:
+      - "**"
+    paths:
+      - '**'
+
+jobs:
+
+  pre-flight:
+    uses: chnm/.github/.github/workflows/hugo--pre-flight-check.yml@main
+    permissions:
+      actions: read
+      contents: read
+    with:
+      content-roots: |
+        content/essays
+        content/field-notes
+        content/templates
+        content/tutorials
+
+  hugo-build-release-deploy:
+    needs: pre-flight
+    if: needs.pre-flight.outputs.should_build == 'true'
+    uses: chnm/.github/.github/workflows/hugo--build-release-deploy.yml@main
+    secrets: inherit
+    with:
+
+      hugo-context-root: "."
+      hugo-devl-url: "https://ai.dev.chnm.gmu.edu"
+      hugo-prod-url: "https://ai.rrchnm.org"
+
+      release-tag-name-type: "iso"
+
+      website-devl-fqdn: "ai.dev.chnm.gmu.edu"
+      website-prod-fqdn: "ai.rrchnm.org"

@@ -2,8 +2,8 @@
 title: "The Hallucinated Footnote"
 dek: "A fabricated citation is not a glitch. It is a model doing exactly what it was built to do, and that should worry historians more than any error."
 date: 2026-09-28
+image: "https://picsum.photos/seed/the-hallucinated-footnote/1200/800"
 authors: ["Mara Ellison"]
-featured: true
 doi: "10.5555/provenance.2026.001"
 ---
 
@@ -15,7 +15,7 @@ A model does not *forget* where it found something. It never found anything. It 
 
 Anthony Grafton called the footnote a kind of curious history, a record of the scholar's labor that lets readers retrace it. A footnote is a promise: *you could go and look*. Its authority does not come from its form but from that promise being kept, over and over, across a whole discipline.
 
-> The fabricated footnote does not break the promise. It reveals how rarely anyone checks.
+{{< pullquote >}}The fabricated footnote does not break the promise. It reveals how rarely anyone checks.{{< /pullquote >}}
 
 What generative AI exposes is less a new kind of dishonesty than an old habit of trust. We read footnotes as signals of care. We rarely follow them.
 

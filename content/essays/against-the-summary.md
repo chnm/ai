@@ -2,6 +2,7 @@
 title: "Against the Summary"
 dek: "What gets lost when a machine reads the archive for us, and why the boring parts of a source are often the evidence."
 date: 2026-08-14
+image: "https://picsum.photos/seed/against-the-summary/1200/800"
 authors: ["Desmond Achterberg"]
 ---
 
@@ -11,7 +12,7 @@ The pitch is seductive: upload three hundred letters and get back a tidy summary
 
 Summaries favor the typical. Archives reward the strange. The letter that breaks a pattern, the ledger entry in a different hand, the complaint written in the margin: these are exactly what a summary smooths away.
 
-> A summary tells you what a source is mostly about. Historians usually need to know what it is *unexpectedly* about.
+{{< pullquote >}}A summary tells you what a source is mostly about. Historians usually need to know what it is *unexpectedly* about.{{< /pullquote >}}
 
 ## A narrower use
 

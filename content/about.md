@@ -19,3 +19,7 @@ We start from the historian's habits of mind: ask where a source came from, who 
 - **Field Notes:** short reports from experiments, classrooms, and archives.
 
 Interested in writing for us? See [Contribute](/contribute/).
+
+## Authors
+
+{{< authors >}}

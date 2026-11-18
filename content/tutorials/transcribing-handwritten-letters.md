@@ -2,6 +2,7 @@
 title: "Transcribing Handwritten Letters with a Vision Model (and Checking Its Work)"
 dek: "A workflow for using multimodal models on nineteenth-century correspondence, with a verification pass built in from the start."
 date: 2026-09-10
+image: "https://picsum.photos/seed/transcribing-handwritten-letters/1200/800"
 authors: ["Priya Raman", "Tom Velasquez"]
 time: "90 minutes"
 level: "Intermediate"

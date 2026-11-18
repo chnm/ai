@@ -6,7 +6,8 @@
   .wf .intro h1 { font-size: clamp(2.4rem, 6vw, 4.5rem); font-weight: 800; font-style: italic; }
   .wf .intro p { max-width: 46ch; margin: 0; }
   .wf .note { font: .8rem/1.5 var(--mono); background: #fff3c4; border: 1px solid #d6951b; padding: .75rem 1rem; }
-  .wf h2.section-label { margin-top: 4rem; }
+  .wf h2.section-label { margin-top: 4rem; display: flex; flex-wrap: wrap; justify-content: space-between; gap: .25rem 1rem; }
+  .wf h2.section-label span + span { font: 400 .9rem var(--body); color: var(--muted); }
   .wf-row { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: var(--gutter); align-items: start; }
   @media (max-width: 900px) { .wf-row { grid-template-columns: 1fr; } }
   .wf-frame { border: 2px solid var(--ink); background: #fff; padding: 10px; display: grid; gap: 8px; font: .7rem/1.3 var(--mono); }
@@ -66,17 +67,18 @@
         <div class="b white" data-n="1"><strong>Provenance</strong>A publication of RRCHNM</div>
         <div class="b white" style="align-items:flex-end">Essays · Tutorials · Templates · Field Notes · About</div>
       </div>
-      <div class="cols c2">
-        <div class="b accent t-essays h-hero" data-n="2"><strong>Cover art</strong>5:4, generative</div>
-        <div class="b white"><strong style="font-size:1.1rem">Headline</strong><div class="line"></div><div class="line s"></div><span>Essay · Author · Date</span></div>
+      <div class="cols c2" style="grid-template-columns:minmax(0,2fr) minmax(0,1fr)">
+        <div class="cols" style="gap:4px"><div class="b accent t-essays h-hero" data-n="2"><strong>Featured cover</strong>16:9</div><strong style="font-size:1.1rem;color:var(--ink)">Headline</strong><div class="line"></div><div class="line s"></div></div>
+        <div class="cols" style="gap:6px;align-content:start"><div class="b white" data-n="3"><strong>Latest</strong></div>
+          {{ range slice "field-notes" "tutorials" "templates" }}<div class="cols" style="grid-template-columns:2.2rem minmax(0,1fr);gap:6px"><div class="b accent t-{{ . }}" style="min-height:2.2rem;padding:0"></div><div style="display:grid;gap:4px;align-content:center"><div class="line"></div><div class="line s"></div></div></div>{{ end }}
+        </div>
       </div>
-      <div class="b white" data-n="3"><strong>Latest</strong> section label</div>
-      <div class="cols c3">
-        {{ range slice "essays" "tutorials" "templates" }}<div class="cols" style="gap:4px"><div class="b accent t-{{ . }} h-cover"></div><div class="line s"></div><div class="line"></div><div class="line s"></div></div>{{ end }}
+      {{ range $i, $t := slice "essays" "tutorials" "templates" "field-notes" }}
+      <div class="t-{{ $t }}" style="display:grid;gap:6px;border-top:2px solid var(--accent);padding-top:6px">
+        <div class="b white"{{ if eq $i 0 }} data-n="4"{{ end }}><strong>{{ humanize $t | title }}</strong>description · All {{ humanize $t | lower }} →</div>
+        <div class="cols c3">{{ range seq 3 }}<div class="b accent" style="min-height:2.5rem"></div>{{ end }}</div>
       </div>
-      <div class="cols c4" data-n="4" style="position:relative">
-        {{ range slice "essays" "tutorials" "templates" "field-notes" }}<div class="b accent t-{{ . }} h-type"><strong>{{ humanize . | title }}</strong>description</div>{{ end }}
-      </div>
+      {{ end }}
       <div class="cols c12">
         <div class="b white" data-n="5"><strong>Welcome</strong></div>
         <div class="b white"><div class="line"></div><div class="line"></div><div class="line s"></div></div>
@@ -89,9 +91,9 @@
     </div>
     <ol class="wf-notes">
       <li><strong>Masthead.</strong> Wordmark and RRCHNM credit on the left, with nav links underlined in a thin rule in each type's color.</li>
-      <li><strong>Hero.</strong> The piece with <code>featured: true</code>, or the newest piece if none is featured.</li>
-      <li><strong>Latest.</strong> The six newest pieces of any type in a responsive card grid.</li>
-      <li><strong>Browse by type.</strong> Four color blocks linking to the section pages: 4 across, 2×2 on tablets, stacked on phones.</li>
+      <li><strong>Featured.</strong> The piece with <code>featured: true</code>, or the newest piece if none is featured, at two-thirds width.</li>
+      <li><strong>Latest.</strong> The next three newest pieces of any type, as small thumbnails beside the featured piece. Stacks below it on tablets and phones.</li>
+      <li><strong>Type sections.</strong> One per type, in menu order, each with a rule in the type's color, its description, an "All …" link, and its three newest pieces.</li>
       <li><strong>Welcome.</strong> A short statement of purpose linking to About.</li>
       <li><strong>Footer.</strong> Site links, the publication and license note, and the stacked RRCHNM and GMU logos.</li>
     </ol>
@@ -103,14 +105,14 @@
     <div class="wf-frame t-tutorials">
       <div class="bar"><i></i><i></i><i></i></div>
       <div class="b white"><strong>Masthead</strong></div>
-      <div class="b accent h-banner" data-n="1"><strong style="font-size:1.3rem">Tutorials</strong>Section description</div>
+      <div class="b white" data-n="1" style="border-bottom:2px solid var(--accent)"><strong style="font-size:1.3rem;font-style:italic">Tutorials</strong>Section description</div>
       <div class="cols c3" data-n="2">
         {{ range seq 6 }}<div class="cols" style="gap:4px"><div class="b accent h-cover"></div><div class="line s"></div><div class="line"></div></div>{{ end }}
       </div>
       <div class="b dark"><strong>Footer</strong></div>
     </div>
     <ol class="wf-notes">
-      <li><strong>Banner.</strong> A gradient in the type's color with a faint oversized type glyph.</li>
+      <li><strong>Header.</strong> A plain italic title and description over a rule in the type's color.</li>
       <li><strong>Card grid.</strong> Every piece in the section, newest first. Each card has a cover, title, dek, and a byline that names the type.</li>
     </ol>
   </div>
@@ -121,29 +123,33 @@
     <div class="wf-frame t-essays">
       <div class="bar"><i></i><i></i><i></i></div>
       <div class="b white"><strong>Masthead</strong></div>
-      <div class="b accent h-banner" data-n="1"><strong style="font-size:1.3rem">Headline</strong>Dek<span>Essay · Author (iD) · Date · DOI · [Time · Level · Tools]</span></div>
-      <div class="with-margin">
-        <div class="b white" data-n="2"><strong>Drop cap + body text</strong><div class="line"></div><div class="line"></div><div class="line s"></div></div>
-        <div class="b" data-n="3">Sidenote</div>
+      <div class="cols" style="grid-template-columns:minmax(0,1fr) minmax(0,2.4fr) minmax(0,1fr);gap:8px">
+        <div class="b" data-n="2" style="align-self:start;border-top:2px solid var(--accent)">Essay<br>Author (iD)<br>Date<br>DOI<br>[Time, Level, Tools]</div>
+        <div style="display:grid;gap:8px">
+          <div class="b white" data-n="1"><strong style="font-size:1.3rem">Headline</strong><span style="font-style:italic">Lede</span></div>
+          <div class="b white" data-n="3"><strong>Drop cap + body text</strong><div class="line"></div><div class="line"></div><div class="line s"></div></div>
+        </div>
+        <div class="b" data-n="4" style="align-self:end">Sidenote</div>
       </div>
-      <div class="narrow">
-        <div class="b white" data-n="4"><strong style="color:var(--accent)">“Pull quote”</strong></div>
-        <div class="b white" data-n="5"><strong>Prompt title · Copy</strong><div class="line"></div><div class="line s"></div></div>
-        <div class="b" data-n="6"><strong>Cite this</strong>Chicago citation, DOI if present</div>
+      <div class="narrow" style="width:54%">
+        <div class="b white" data-n="5"><strong style="color:var(--accent)">“Pull quote”</strong></div>
+        <div class="b white" data-n="6"><strong>Prompt title · Copy</strong><div class="line"></div><div class="line s"></div></div>
+        <div class="b" data-n="7"><strong>Cite this</strong>Chicago citation, DOI if present</div>
       </div>
-      <div class="cols c3" data-n="7">
+      <div class="cols c3">
         {{ range seq 3 }}<div class="b accent h-cover"></div>{{ end }}
       </div>
       <div class="b dark"><strong>Footer</strong></div>
     </div>
     <ol class="wf-notes">
-      <li><strong>Header.</strong> Byline links to ORCID through <code>data/authors.toml</code>, and the DOI comes from front matter. Tutorials add time, level, and tools.</li>
-      <li><strong>Reading column.</strong> About 38rem wide, with a drop cap in the type color.</li>
-      <li><strong>Sidenotes.</strong> <code>{{ "{{< sidenote >}}" }}</code> places a note in the margin at 1200px and up, and inline below the paragraph on smaller screens.</li>
-      <li><strong>Pull quotes.</strong> Any Markdown blockquote.</li>
+      <li><strong>Title and lede.</strong> No banner or cover image; the headline and italic lede sit on the paper background.</li>
+      <li><strong>Metadata.</strong> Type, authors (ORCID via <code>data/authors.toml</code>), date, DOI, and tutorial details sit in the left margin at 1300px and up, and as a row under the lede on smaller screens.</li>
+      <li><strong>Reading column.</strong> 38rem wide, with a drop cap in the type color.</li>
+      <li><strong>Sidenotes.</strong> <code>{{ "{{< sidenote >}}" }}</code> places a note in the right margin at 1300px and up, and inline below the paragraph on smaller screens. Ordinary Markdown footnotes (<code>[^1]</code>) also appear in the margin at 1300px and up, and stay in the numbered list at the end of the piece.</li>
+      <li><strong>Quotations.</strong> Markdown <code>&gt;</code> blockquotes are body-size with a thin rule in the type color. <code>{{ "{{< pullquote >}}" }}</code> sets a large display quote, and <code>{{ `{{< epigraph source="…" >}}` }}</code> sets an indented opening quotation with an optional source.</li>
       <li><strong>Prompt box.</strong> <code>{{ "{{< prompt title=\"…\" >}}" }}</code> renders a copyable block, used mostly in Templates.</li>
       <li><strong>Cite this.</strong> A generated Chicago citation. Highwire <code>citation_*</code> meta tags let Zotero save the piece as a journal article.</li>
-      <li><strong>More in this section.</strong> Up to three other pieces of the same type.</li>
+      <li><strong>More in this section.</strong> Up to three other pieces of the same type, below the article.</li>
     </ol>
   </div>
 
@@ -174,7 +180,7 @@
     <tbody>
       <tr><td><code>title</code>, <code>date</code></td><td>Yes</td><td>Everywhere</td></tr>
       <tr><td><code>dek</code></td><td>Recommended</td><td>Cards, header, meta description</td></tr>
-      <tr><td><code>authors</code></td><td>Yes</td><td>Bylines, citation, <code>citation_author</code> tags. ORCID iDs come from <code>data/authors.toml</code>.</td></tr>
+      <tr><td><code>authors</code></td><td>Yes</td><td>Bylines, citation, <code>citation_author</code> tags, and an author page at <code>/authors/&lt;name&gt;/</code>. Bios and ORCID iDs come from <code>data/authors.toml</code>.</td></tr>
       <tr><td><code>doi</code></td><td>No</td><td>Header link, citation URL, <code>citation_doi</code></td></tr>
       <tr><td><code>featured</code></td><td>No</td><td>Home page hero</td></tr>
       <tr><td><code>image</code></td><td>No</td><td>Replaces the generative cover art</td></tr>

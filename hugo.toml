@@ -1,6 +1,14 @@
 baseURL = "https://provenance.rrchnm.org/"
 title = "Provenance"
 locale = "en-US"
+capitalizeListTitles = false
+
+[taxonomies]
+author = "authors"
+
+# Editors control the content, so allow raw HTML in Markdown (e.g. <details> blocks).
+[markup.goldmark.renderer]
+unsafe = true
 
 [params]
 tagline = "Generative AI and the historian's craft"

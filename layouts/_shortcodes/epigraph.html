@@ -1,0 +1,5 @@
+{{/* {{< epigraph source="[Name](url)" >}}Quoted text{{< /epigraph >}} — source is optional and may contain Markdown. */}}
+<figure class="epigraph">
+  <blockquote>{{ .Inner | .Page.RenderString (dict "display" "block") }}</blockquote>
+  {{ with .Get "source" }}<figcaption>{{ . | $.Page.RenderString }}</figcaption>{{ end }}
+</figure>

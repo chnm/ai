@@ -1,9 +1,9 @@
 {{ define "main" }}
-<header class="banner">
-  <h1>{{ .Title }}</h1>
-  {{ with .Description }}<p class="dek">{{ . }}</p>{{ end }}
-</header>
 <div class="wrap">
+  <header class="page-head">
+    <h1>{{ .Title }}</h1>
+    {{ with .Description }}<p class="dek">{{ . }}</p>{{ end }}
+  </header>
   <div class="grid list">
     {{ range .Pages }}{{ partial "card.html" . }}{{ end }}
   </div>

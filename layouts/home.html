@@ -3,28 +3,37 @@
 {{ $feature := index $pages 0 }}
 {{ with where $pages "Params.featured" true }}{{ $feature = index . 0 }}{{ end }}
 <div class="wrap">
-  <section class="hero t-{{ $feature.Section }}">
-    <a href="{{ $feature.RelPermalink }}" tabindex="-1">{{ partial "cover.html" $feature }}</a>
-    <div>
+  <section class="top">
+    <article class="feature t-{{ $feature.Section }}">
+      <a href="{{ $feature.RelPermalink }}" tabindex="-1">{{ partial "cover.html" $feature }}</a>
       <h2><a href="{{ $feature.RelPermalink }}">{{ $feature.Title }}</a></h2>
       <p class="dek">{{ $feature.Params.dek }}</p>
       <p class="byline">{{ $feature.CurrentSection.Params.singular }} · {{ delimit $feature.Params.authors ", " " & " }} · {{ $feature.Date.Format "January 2, 2006" }}</p>
+    </article>
+    <div class="latest">
+      <h2 class="section-label">Latest</h2>
+      {{ range first 3 (complement (slice $feature) $pages) }}
+      <article class="mini t-{{ .Section }}">
+        <a href="{{ .RelPermalink }}" tabindex="-1">{{ partial "cover.html" . }}</a>
+        <div>
+          <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+          <p class="byline">{{ .CurrentSection.Params.singular }} · {{ delimit .Params.authors ", " " & " }}</p>
+        </div>
+      </article>
+      {{ end }}
     </div>
   </section>
 
-  <h2 class="section-label">Latest</h2>
-  <div class="grid">
-    {{ range first 6 (complement (slice $feature) $pages) }}{{ partial "card.html" . }}{{ end }}
-  </div>
-
-  <nav class="types" aria-label="Browse by type">
-    {{ range site.Sections }}
-    <a class="type t-{{ .Section }}" href="{{ .RelPermalink }}">
-      <h3>{{ .Title }}</h3>
+  {{ range site.Sections }}
+  <section class="type-section t-{{ .Section }}">
+    <header class="section-head">
+      <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
       <p>{{ .Description }}</p>
-    </a>
-    {{ end }}
-  </nav>
+      <a class="all" href="{{ .RelPermalink }}">All {{ lower .Title }} →</a>
+    </header>
+    <div class="grid">{{ range first 3 .RegularPages }}{{ partial "card.html" . }}{{ end }}</div>
+  </section>
+  {{ end }}
 
   <section class="colophon">
     <h2>Welcome to Provenance</h2>

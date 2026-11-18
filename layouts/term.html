@@ -1,0 +1,11 @@
+{{ define "main" }}
+{{ $info := index hugo.Data.authors .Title }}
+<div class="wrap">
+  <header class="page-head">
+    <h1>{{ .Title }}</h1>
+    {{ with $info.bio }}<p class="dek">{{ . }}</p>{{ end }}
+    {{ with $info.orcid }}<p class="byline"><a class="orcid" href="https://orcid.org/{{ . }}" aria-label="ORCID profile">iD</a> <a href="https://orcid.org/{{ . }}">orcid.org/{{ . }}</a></p>{{ end }}
+  </header>
+  <div class="author-page">{{ partial "works.html" .Pages }}</div>
+</div>
+{{ end }}

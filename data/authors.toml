@@ -1,4 +1,27 @@
 # Optional author details, keyed by the name used in a piece's `authors` list.
-# 0000-0002-1825-0097 is ORCID's official example iD (placeholder).
+# Every name in an `authors` list gets a page at /authors/<name>/ automatically;
+# entries here only add a bio and ORCID iD. All people below are fictional placeholders.
+# 0000-0002-1825-0097 is ORCID's official example iD.
+
 ["Mara Ellison"]
+bio = "Mara Ellison is a historian of information and scholarly communication."
+orcid = "0000-0002-1825-0097"
+
+["Desmond Achterberg"]
+bio = "Desmond Achterberg teaches graduate methods and writes about archives and reading."
+
+["Priya Raman"]
+bio = "Priya Raman works on nineteenth-century correspondence and digital editions."
+
+["Tom Velasquez"]
+bio = "Tom Velasquez builds research pipelines for digitized newspapers."
+
+["Lena Okafor"]
+bio = "Lena Okafor is a photo historian and museum curator."
+
+["Provenance Editors"]
+bio = "The editorial team at the Roy Rosenzweig Center for History and New Media."
+
+["Jason A. Heppler"]
+bio = "Jason A. Heppler is the senior developer-scholar at the Roy Rosenzweig Center for History and New Media"
 orcid = "0000-0002-1825-0097"

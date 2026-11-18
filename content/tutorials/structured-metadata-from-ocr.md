@@ -2,6 +2,7 @@
 title: "From Messy OCR to Structured Metadata"
 dek: "Extract names, places, and dates from digitized newspapers into a spreadsheet you can actually audit."
 date: 2026-07-22
+image: "https://picsum.photos/seed/structured-metadata-from-ocr/1200/800"
 authors: ["Tom Velasquez"]
 time: "2 hours"
 level: "Beginner"

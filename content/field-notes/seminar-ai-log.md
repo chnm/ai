@@ -2,6 +2,7 @@
 title: "Notes from a Graduate Seminar's AI Log"
 dek: "Twelve students kept a shared log of every time they used AI for a semester. Here is what they found."
 date: 2026-06-30
+image: "https://picsum.photos/seed/seminar-ai-log/1200/800"
 authors: ["Desmond Achterberg", "Seminar participants"]
 ---
 

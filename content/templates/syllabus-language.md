@@ -2,6 +2,7 @@
 title: "Syllabus Language: Generative AI in the History Classroom"
 dek: "Three policy statements, from restrictive to open, written for history courses specifically."
 date: 2026-08-01
+image: "https://picsum.photos/seed/syllabus-language/1200/800"
 authors: ["Provenance Editors"]
 ---
 

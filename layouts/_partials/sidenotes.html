@@ -1,0 +1,9 @@
+{{/* Returns .Content with a copy of each Markdown footnote placed after its reference, so CSS can set it in the margin.
+     The footnote list at the end is left untouched for narrow screens and print. */}}
+{{ $html := string .Content }}
+{{ range findRESubmatch `<li id="fn:([\w-]+)">([\s\S]*?)</li>` $html }}
+  {{ $note := index . 2 | replaceRE `<a href="#fnref[^"]*"[^>]*>[^<]*</a>` "" | replaceRE `</?p>` " " | replaceRE `&#160;` "" | strings.TrimSpace | replaceRE `\$` "$$$$" }}
+  {{ $ref := printf `(<sup id="fnref:%s"><a [^>]*>([^<]+)</a></sup>)` (index . 1) }}
+  {{ $html = replaceRE $ref (printf `$1<span class="sn fn"><small data-n="$2">%s</small></span>` $note) $html 1 }}
+{{ end }}
+{{ return ($html | safeHTML) }}

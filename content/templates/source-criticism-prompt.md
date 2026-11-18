@@ -2,6 +2,7 @@
 title: "A Source-Criticism Prompt for Machine Output"
 dek: "Turn the historian's standard questions on the model itself. Copy it, adapt it, and teach with it."
 date: 2026-09-02
+image: "https://picsum.photos/seed/source-criticism-prompt/1200/800"
 authors: ["Provenance Editors"]
 ---
 

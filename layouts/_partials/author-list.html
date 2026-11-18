@@ -1,0 +1,9 @@
+{{/* Every author, alphabetically, linking to their page. Used on /authors/ and the About page. */}}
+<ul class="works">
+  {{ range site.Taxonomies.authors.Alphabetical }}
+  <li>
+    <a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a>
+    <span class="byline">{{ .Count }} {{ cond (eq .Count 1) "piece" "pieces" }}</span>
+  </li>
+  {{ end }}
+</ul>

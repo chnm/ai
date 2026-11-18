@@ -1,0 +1,9 @@
+{{/* A compact list of pieces. Context: a page collection. Used on author pages and under articles. */}}
+<ul class="works">
+  {{ range . }}
+  <li class="t-{{ .Section }}">
+    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    <span class="byline">{{ .CurrentSection.Params.singular }} · {{ .Date.Format "January 2, 2006" }}</span>
+  </li>
+  {{ end }}
+</ul>

@@ -1,6 +1,7 @@
 {{/* Generative cover art: angle and highlight position are seeded from the title so each piece is stable but distinct. Set `image:` in front matter to use real art. */}}
 {{ with .Params.image }}
-<img class="cover" src="{{ . | relURL }}" alt="">
+{{ $src := . | relURL }}{{ with $.Resources.Get . }}{{ $src = .RelPermalink }}{{ end }}
+<img class="cover" src="{{ $src }}" alt="">
 {{ else }}
 {{ $h := hash.FNV32a .Title }}
 <div class="cover" aria-hidden="true" style="--a:{{ mod $h 360 }}deg;--x:{{ add 10 (mod $h 80) }}%;--y:{{ add 10 (mod (div $h 97) 70) }}%"></div>

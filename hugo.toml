@@ -1,5 +1,5 @@
-baseURL = "https://provenance.rrchnm.org/"
-title = "Provenance"
+baseURL = "https://ai.rrchnm.org/"
+title = "AI @ RRCHNM"
 locale = "en-US"
 capitalizeListTitles = false
 

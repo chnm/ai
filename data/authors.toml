@@ -25,9 +25,14 @@ photo = "https://picsum.photos/seed/tom-velasquez/300/300"
 bio = "Lena Okafor is a photo historian and museum curator."
 photo = "https://picsum.photos/seed/lena-okafor/300/300"
 
-["Provenance Editors"]
+["RRCHNM Editors"]
 bio = "The editorial team at the Roy Rosenzweig Center for History and New Media."
-photo = "https://picsum.photos/seed/provenance-editors/300/300"
+photo = "https://picsum.photos/seed/rrchnm-editors/300/300"
+
+["Jessica Otis"]
+bio = "Jessica Otis is an associate professor of history at George Mason University"
+photo = "https://picsum.photos/seed/jessica-otis/300/300"
+orcid = "0000-0002-1825-0097"
 
 ["Jason A. Heppler"]
 bio = "Jason A. Heppler is the senior developer-scholar at the Roy Rosenzweig Center for History and New Media"

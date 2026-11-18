@@ -120,7 +120,7 @@ h1, h2, h3 { font-family: var(--display); line-height: 1.05; letter-spacing: -0.
 }
 
 /* Long-form reading */
-.prose { margin-block: 2.5rem 3rem; counter-reset: sn; }
+.prose { margin-block: 2.5rem 3rem; counter-reset: sn; overflow-wrap: break-word; }
 .prose h2 { font-size: 2rem; margin: 2.75rem 0 .75rem; }
 .prose h3 { font-size: 1.4rem; margin: 2rem 0 .5rem; }
 .prose > p:first-of-type::first-letter { float: left; font: 900 4.7em/.8 var(--display); margin: .07em .08em 0 0; color: var(--accent); }

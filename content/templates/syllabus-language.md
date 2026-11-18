@@ -3,7 +3,7 @@ title: "Syllabus Language: Generative AI in the History Classroom"
 dek: "Three policy statements, from restrictive to open, written for history courses specifically."
 date: 2026-08-01
 image: "https://picsum.photos/seed/syllabus-language/1200/800"
-authors: ["Provenance Editors"]
+authors: ["RRCHNM Editors"]
 ---
 
 Generic AI policies usually focus on plagiarism. History courses also need to address evidence, citation, and the difference between a source and a summary. Pick the version that fits your course, and edit it freely.{{< sidenote >}}Placeholder policy language for the prototype.{{< /sidenote >}}

@@ -4,10 +4,10 @@ dek: "A fabricated citation is not a glitch. It is a model doing exactly what it
 date: 2026-09-28
 image: "https://picsum.photos/seed/the-hallucinated-footnote/1200/800"
 authors: ["Mara Ellison"]
-doi: "10.5555/provenance.2026.001"
+doi: "10.5555/rrchnm-ai.2026.001"
 ---
 
-Every historian has had the experience: a footnote that looks right, cites a plausible archive, a plausible box and folder, a plausible date, and leads nowhere. Before 2023, the culprit was usually a tired graduate student or a careless secondary source. Now it is more often a language model, and the difference matters.{{< sidenote >}}This is dummy text for the *Provenance* prototype. Authors, citations, and anecdotes are invented.{{< /sidenote >}}
+Every historian has had the experience: a footnote that looks right, cites a plausible archive, a plausible box and folder, a plausible date, and leads nowhere. Before 2023, the culprit was usually a tired graduate student or a careless secondary source. Now it is more often a language model, and the difference matters.{{< sidenote >}}This is dummy text for the *AI @ RRCHNM* prototype. Authors, citations, and anecdotes are invented.{{< /sidenote >}}
 
 A model does not *forget* where it found something. It never found anything. It produces text that has the statistical shape of a citation, and the footnote, the historian's most ordinary tool for accountability, turns out to be very easy to imitate.
 

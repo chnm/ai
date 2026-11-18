@@ -3,7 +3,7 @@ title: "A Source-Criticism Prompt for Machine Output"
 dek: "Turn the historian's standard questions on the model itself. Copy it, adapt it, and teach with it."
 date: 2026-09-02
 image: "https://picsum.photos/seed/source-criticism-prompt/1200/800"
-authors: ["Provenance Editors"]
+authors: ["RRCHNM Editors"]
 ---
 
 Historians ask the same questions of every source: who made it, when, for whom, and why? This template asks a model to apply those questions to its own answer. That won't make the answer reliable, but it often surfaces where the answer is weakest.{{< sidenote >}}Template text is placeholder content for the prototype.{{< /sidenote >}}

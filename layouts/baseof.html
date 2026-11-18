@@ -25,7 +25,7 @@
   <a class="skip" href="#main">Skip to content</a>
   <header class="masthead">
     <div>
-      <a class="wordmark" href="{{ "/" | relURL }}">Provenance</a>
+        <a class="wordmark" href="{{ "/" | relURL }}">{{ .Site.Title }}</a>
       <p class="publisher">A publication of the <a href="https://rrchnm.org/"><img src="{{ "img/rrchnm-small.png" | relURL }}" alt="" width="16" height="16"> Roy Rosenzweig Center for History and New Media</a></p>
     </div>
     <nav aria-label="Main">
@@ -35,7 +35,7 @@
   <main id="main">{{ block "main" . }}{{ end }}</main>
   <footer>
     <div>
-      <a class="wordmark" href="{{ "/" | relURL }}">Provenance</a>
+        <a class="wordmark" href="{{ "/" | relURL }}">{{ .Site.Title }}</a>
       <p>{{ site.Params.tagline }}.</p>
       <p><a href="{{ "/about/" | relURL }}">About</a> · <a href="{{ "/contribute/" | relURL }}">Contribute</a> · <a href="{{ "/index.xml" | relURL }}">RSS</a></p>
     </div>

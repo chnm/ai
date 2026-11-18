@@ -1,0 +1,38 @@
+{{ define "main" }}
+{{ $pages := where site.RegularPages "Section" "in" site.Params.mainSections }}
+{{ $feature := index $pages 0 }}
+{{ with where $pages "Params.featured" true }}{{ $feature = index . 0 }}{{ end }}
+<div class="wrap">
+  <section class="hero t-{{ $feature.Section }}">
+    <a href="{{ $feature.RelPermalink }}" tabindex="-1">{{ partial "cover.html" $feature }}</a>
+    <div>
+      <p class="kicker">Featured {{ $feature.CurrentSection.Params.singular }}</p>
+      <h2><a href="{{ $feature.RelPermalink }}">{{ $feature.Title }}</a></h2>
+      <p class="dek">{{ $feature.Params.dek }}</p>
+      <p class="byline">{{ delimit $feature.Params.authors ", " " & " }} · {{ $feature.Date.Format "January 2, 2006" }}</p>
+    </div>
+  </section>
+
+  <h2 class="section-label"><span>Latest</span><span>{{ site.Params.tagline }}</span></h2>
+  <div class="grid">
+    {{ range first 6 (complement (slice $feature) $pages) }}{{ partial "card.html" . }}{{ end }}
+  </div>
+
+  <nav class="types" aria-label="Browse by type">
+    {{ range site.Sections }}
+    <a class="type t-{{ .Section }}" href="{{ .RelPermalink }}">
+      <h3>{{ .Title }}</h3>
+      <p>{{ .Description }}</p>
+      <span class="count">{{ len .Pages }} {{ cond (eq (len .Pages) 1) "piece" "pieces" }} →</span>
+    </a>
+    {{ end }}
+  </nav>
+
+  <section class="colophon">
+    <h2>Welcome to Provenance</h2>
+    <div>
+      <p><em>Provenance</em> publishes essays, tutorials, templates, and field notes from the <a href="https://rrchnm.org/">Roy Rosenzweig Center for History and New Media</a> and its collaborators. We are skeptical but practical: we want to help historians use these tools well, or decide not to use them at all. <a href="{{ "/about/" | relURL }}">More about us →</a></p>
+    </div>
+  </section>
+</div>
+{{ end }}

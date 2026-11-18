@@ -1,0 +1,7 @@
+<article class="card t-{{ .Section }}">
+  <a href="{{ .RelPermalink }}" tabindex="-1">{{ partial "cover.html" . }}</a>
+  <p class="kicker">{{ .CurrentSection.Params.singular }}</p>
+  <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+  {{ with .Params.dek }}<p class="dek">{{ . }}</p>{{ end }}
+  {{ with .Params.authors }}<p class="byline">{{ delimit . ", " " & " }}</p>{{ end }}
+</article>

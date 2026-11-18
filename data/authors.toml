@@ -1,0 +1,4 @@
+# Optional author details, keyed by the name used in a piece's `authors` list.
+# 0000-0002-1825-0097 is ORCID's official example iD (placeholder).
+["Mara Ellison"]
+orcid = "0000-0002-1825-0097"

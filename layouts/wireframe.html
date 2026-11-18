@@ -1,0 +1,184 @@
+{{/* TEMPORARY. Delete this file and content/wireframe.md to remove the page. Styles are scoped here so main.css stays clean. */}}
+{{ define "main" }}
+<style>
+  .wf { --box: #e4ded2; --line: #9a9184; }
+  .wf .intro { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem 2rem; align-items: baseline; padding: 2.5rem 0 1rem; }
+  .wf .intro h1 { font-size: clamp(2.4rem, 6vw, 4.5rem); font-weight: 800; font-style: italic; }
+  .wf .intro p { max-width: 46ch; margin: 0; }
+  .wf .note { font: .8rem/1.5 var(--mono); background: #fff3c4; border: 1px solid #d6951b; padding: .75rem 1rem; }
+  .wf h2.section-label { margin-top: 4rem; }
+  .wf-row { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: var(--gutter); align-items: start; }
+  @media (max-width: 900px) { .wf-row { grid-template-columns: 1fr; } }
+  .wf-frame { border: 2px solid var(--ink); background: #fff; padding: 10px; display: grid; gap: 8px; font: .7rem/1.3 var(--mono); }
+  .wf-frame > .bar { height: 14px; display: flex; gap: 5px; align-items: center; border-bottom: 1px solid var(--line); padding-bottom: 8px; }
+  .wf-frame > .bar i { width: 8px; height: 8px; border-radius: 50%; background: var(--line); }
+  .b { position: relative; display: flex; flex-direction: column; justify-content: center; gap: 4px; min-height: 2.5rem; padding: 8px 10px; background: var(--box); border: 1px dashed var(--line); color: var(--muted); }
+  .b.dark { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .b.accent { background: var(--accent); color: var(--paper); border-color: var(--accent-dark); }
+  .b.white { background: #fff; }
+  .b strong { color: var(--ink); font-weight: 500; }
+  .b.dark strong, .b.accent strong { color: inherit; }
+  [data-n] { position: relative; }
+  [data-n]::before { content: attr(data-n); position: absolute; top: -9px; left: -9px; width: 20px; height: 20px; display: grid; place-items: center; border-radius: 50%; background: var(--ink); color: var(--paper); font: 600 .65rem var(--mono); }
+  .b.dark[data-n]::before, .b.accent[data-n]::before { background: var(--paper); color: var(--ink); }
+  .cols { display: grid; gap: 8px; }
+  .c2 { grid-template-columns: 1.25fr 1fr; } .c3 { grid-template-columns: repeat(3, 1fr); } .c4 { grid-template-columns: repeat(4, 1fr); } .c12 { grid-template-columns: 1fr 2fr; }
+  .narrow { width: 62%; margin: 0 auto; display: grid; gap: 8px; }
+  .with-margin { display: grid; grid-template-columns: 62% 1fr; gap: 8px; margin-left: 19%; }
+  .h-hero { min-height: 9rem; } .h-cover { min-height: 4.5rem; } .h-type { min-height: 4rem; } .h-banner { min-height: 6rem; }
+  .line { height: 6px; background: var(--line); opacity: .5; } .line.s { width: 60%; }
+  .wf-notes { margin: 0; padding-left: 1.4rem; font-size: 1rem; }
+  .wf-notes li { margin: 0 0 .7rem; }
+  .wf-notes code, .wf table code { font: .85em var(--mono); background: var(--box); padding: .05em .3em; }
+  .swatches { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--gutter); }
+  @media (max-width: 1000px) { .swatches { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .swatches { grid-template-columns: 1fr; } }
+  .swatch .cover { margin-bottom: .75rem; }
+  .swatch h3 { font-size: 1.5rem; font-style: italic; }
+  .swatch dl { display: grid; grid-template-columns: auto 1fr; gap: .15rem .75rem; margin: .5rem 0 0; font: .75rem var(--mono); }
+  .swatch dt { color: var(--muted); }
+  .swatch .chips { display: flex; gap: 4px; margin-top: .5rem; }
+  .swatch .chips span { flex: 1; height: 1.5rem; }
+  .type-specimen { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: var(--gutter); }
+  .type-specimen > div { border-top: 1px solid var(--ink); padding-top: .75rem; }
+  .type-specimen .big { font-size: 3rem; line-height: 1; margin: .5rem 0; }
+  .wf table { width: 100%; border-collapse: collapse; font-size: .95rem; }
+  .wf th, .wf td { text-align: left; vertical-align: top; padding: .55rem .75rem .55rem 0; border-bottom: 1px solid #d8d1c3; }
+  .wf th { font: 500 .75rem var(--mono); text-transform: uppercase; letter-spacing: .08em; }
+  .table-scroll { overflow-x: auto; }
+</style>
+
+<div class="wrap wf">
+  <div class="intro">
+    <h1>Wireframe</h1>
+    <p class="note">Temporary page, not linked from the site or included in RSS. Remove before launch by deleting <code>content/wireframe.md</code> and <code>layouts/wireframe.html</code>.</p>
+  </div>
+  <p>{{ .Params.dek }} Three templates render everything: <strong>home</strong>, <strong>section list</strong>, and <strong>article</strong>. They share a masthead and footer and get their color from the content type.</p>
+
+  {{/* ---------- HOME ---------- */}}
+  <h2 class="section-label"><span>1 · Home page</span><span><code>layouts/home.html</code></span></h2>
+  <div class="wf-row">
+    <div class="wf-frame">
+      <div class="bar"><i></i><i></i><i></i></div>
+      <div class="cols c12">
+        <div class="b white" data-n="1"><strong>Provenance</strong>A publication of RRCHNM</div>
+        <div class="b white" style="align-items:flex-end">Essays · Tutorials · Templates · Field Notes · About</div>
+      </div>
+      <div class="cols c2">
+        <div class="b accent t-essays h-hero" data-n="2"><strong>Cover art</strong>5:4, generative</div>
+        <div class="b white"><span>FEATURED ESSAY</span><strong style="font-size:1.1rem">Headline</strong><div class="line"></div><div class="line s"></div><span>Byline · Date</span></div>
+      </div>
+      <div class="b white" data-n="3"><strong>Latest</strong> section label</div>
+      <div class="cols c3">
+        {{ range slice "essays" "tutorials" "templates" }}<div class="cols" style="gap:4px"><div class="b accent t-{{ . }} h-cover"></div><div class="line s"></div><div class="line"></div><div class="line s"></div></div>{{ end }}
+      </div>
+      <div class="cols c4" data-n="4" style="position:relative">
+        {{ range slice "essays" "tutorials" "templates" "field-notes" }}<div class="b accent t-{{ . }} h-type"><strong>{{ humanize . | title }}</strong>description · count</div>{{ end }}
+      </div>
+      <div class="cols c12">
+        <div class="b white" data-n="5"><strong>Welcome</strong></div>
+        <div class="b white"><div class="line"></div><div class="line"></div><div class="line s"></div></div>
+      </div>
+      <div class="cols c3">
+        <div class="b dark" data-n="6"><strong>Provenance</strong>tagline<br>About · Contribute · RSS</div>
+        <div class="b dark">Publication note · license</div>
+        <div class="b dark"><strong>RRCHNM logo</strong><strong>GMU logo</strong></div>
+      </div>
+    </div>
+    <ol class="wf-notes">
+      <li><strong>Masthead.</strong> Wordmark and RRCHNM credit on the left, with nav links underlined in each type's color.</li>
+      <li><strong>Hero.</strong> The piece with <code>featured: true</code>, or the newest piece if none is featured.</li>
+      <li><strong>Latest.</strong> The six newest pieces of any type in a responsive card grid.</li>
+      <li><strong>Browse by type.</strong> Four color blocks linking to the section pages: 4 across, 2×2 on tablets, stacked on phones.</li>
+      <li><strong>Welcome.</strong> A short statement of purpose linking to About.</li>
+      <li><strong>Footer.</strong> Site links, the publication and license note, and the stacked RRCHNM and GMU logos.</li>
+    </ol>
+  </div>
+
+  {{/* ---------- SECTION ---------- */}}
+  <h2 class="section-label"><span>2 · Section list</span><span><code>layouts/list.html</code></span></h2>
+  <div class="wf-row">
+    <div class="wf-frame t-tutorials">
+      <div class="bar"><i></i><i></i><i></i></div>
+      <div class="b white"><strong>Masthead</strong></div>
+      <div class="b accent h-banner" data-n="1"><span>PROVENANCE</span><strong style="font-size:1.3rem">Tutorials</strong>Section description</div>
+      <div class="cols c3" data-n="2">
+        {{ range seq 6 }}<div class="cols" style="gap:4px"><div class="b accent h-cover"></div><div class="line s"></div><div class="line"></div></div>{{ end }}
+      </div>
+      <div class="b dark"><strong>Footer</strong></div>
+    </div>
+    <ol class="wf-notes">
+      <li><strong>Banner.</strong> A gradient in the type's color, with a halftone texture and an oversized type glyph.</li>
+      <li><strong>Card grid.</strong> Every piece in the section, newest first. Each card has a cover, kicker, title, dek, and byline.</li>
+    </ol>
+  </div>
+
+  {{/* ---------- ARTICLE ---------- */}}
+  <h2 class="section-label"><span>3 · Article</span><span><code>layouts/single.html</code></span></h2>
+  <div class="wf-row">
+    <div class="wf-frame t-essays">
+      <div class="bar"><i></i><i></i><i></i></div>
+      <div class="b white"><strong>Masthead</strong></div>
+      <div class="b accent h-banner" data-n="1"><span>ESSAY</span><strong style="font-size:1.3rem">Headline</strong>Dek<span>Author (iD) · Date · DOI · [Time · Level · Tools]</span></div>
+      <div class="with-margin">
+        <div class="b white" data-n="2"><strong>Drop cap + body text</strong><div class="line"></div><div class="line"></div><div class="line s"></div></div>
+        <div class="b" data-n="3">Sidenote</div>
+      </div>
+      <div class="narrow">
+        <div class="b white" data-n="4"><strong style="color:var(--accent)">“Pull quote”</strong></div>
+        <div class="b white" data-n="5"><strong>PROMPT · Copy</strong><div class="line"></div><div class="line s"></div></div>
+        <div class="b" data-n="6"><strong>Cite this</strong>Chicago citation, DOI if present</div>
+      </div>
+      <div class="cols c3" data-n="7">
+        {{ range seq 3 }}<div class="b accent h-cover"></div>{{ end }}
+      </div>
+      <div class="b dark"><strong>Footer</strong></div>
+    </div>
+    <ol class="wf-notes">
+      <li><strong>Header.</strong> Byline links to ORCID through <code>data/authors.toml</code>, and the DOI comes from front matter. Tutorials add time, level, and tools.</li>
+      <li><strong>Reading column.</strong> About 38rem wide, with a drop cap in the type color.</li>
+      <li><strong>Sidenotes.</strong> <code>{{ "{{< sidenote >}}" }}</code> places a note in the margin at 1200px and up, and inline below the paragraph on smaller screens.</li>
+      <li><strong>Pull quotes.</strong> Any Markdown blockquote.</li>
+      <li><strong>Prompt box.</strong> <code>{{ "{{< prompt title=\"…\" >}}" }}</code> renders a copyable block, used mostly in Templates.</li>
+      <li><strong>Cite this.</strong> A generated Chicago citation. Highwire <code>citation_*</code> meta tags let Zotero save the piece as a journal article.</li>
+      <li><strong>More in this section.</strong> Up to three other pieces of the same type.</li>
+    </ol>
+  </div>
+
+  {{/* ---------- DESIGN SYSTEM ---------- */}}
+  <h2 class="section-label"><span>4 · Content types</span><span>live cover art</span></h2>
+  <div class="swatches">
+    {{ range site.Sections }}
+    <div class="swatch t-{{ .Section }}">
+      {{ with index .RegularPages 0 }}{{ partial "cover.html" . }}{{ end }}
+      <h3>{{ .Title }}</h3>
+      <div class="chips"><span style="background:var(--accent-2)"></span><span style="background:var(--accent)"></span><span style="background:var(--accent-dark)"></span></div>
+      <dl><dt>Section</dt><dd>/{{ .Section }}/</dd><dt>Singular</dt><dd>{{ .Params.singular }}</dd><dt>Pieces</dt><dd>{{ len .RegularPages }}</dd></dl>
+    </div>
+    {{ end }}
+  </div>
+
+  <h2 class="section-label"><span>5 · Typography</span><span>Google Fonts</span></h2>
+  <div class="type-specimen">
+    <div><span class="kicker">Display · Fraunces</span><p class="big" style="font-family:var(--display);font-weight:800">Provenance</p><p class="big" style="font-family:var(--display);font-weight:900;font-style:italic">Essays</p></div>
+    <div><span class="kicker">Body · Source Serif 4</span><p style="font-size:1.25rem">Historians ask where a source came from, who made it, and why.</p><p class="dek">Italic for decks and standfirsts.</p></div>
+    <div><span class="kicker">Labels and prompts · IBM Plex Mono</span><p style="font:1rem/1.5 var(--mono)">KICKER · BYLINE · DOI<br>Transcribe this page exactly as written.</p></div>
+  </div>
+
+  <h2 class="section-label"><span>6 · Front matter</span><span><code>archetypes/default.md</code></span></h2>
+  <div class="table-scroll">
+  <table>
+    <thead><tr><th>Field</th><th>Required</th><th>Used for</th></tr></thead>
+    <tbody>
+      <tr><td><code>title</code>, <code>date</code></td><td>Yes</td><td>Everywhere</td></tr>
+      <tr><td><code>dek</code></td><td>Recommended</td><td>Cards, header, meta description</td></tr>
+      <tr><td><code>authors</code></td><td>Yes</td><td>Bylines, citation, <code>citation_author</code> tags. ORCID iDs come from <code>data/authors.toml</code>.</td></tr>
+      <tr><td><code>doi</code></td><td>No</td><td>Header link, citation URL, <code>citation_doi</code></td></tr>
+      <tr><td><code>featured</code></td><td>No</td><td>Home page hero</td></tr>
+      <tr><td><code>image</code></td><td>No</td><td>Replaces the generative cover art</td></tr>
+      <tr><td><code>time</code>, <code>level</code>, <code>tools</code></td><td>No</td><td>Tutorial header metadata</td></tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+{{ end }}

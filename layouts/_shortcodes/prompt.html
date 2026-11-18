@@ -1,0 +1,4 @@
+<figure class="prompt">
+  <figcaption>{{ .Get "title" | default "Prompt" }}<button type="button" onclick="navigator.clipboard.writeText(this.closest('figure').querySelector('pre').innerText).then(()=>this.textContent='Copied')">Copy</button></figcaption>
+  <pre>{{ trim .Inner "\n" }}</pre>
+</figure>

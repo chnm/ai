@@ -6,14 +6,13 @@
   <section class="hero t-{{ $feature.Section }}">
     <a href="{{ $feature.RelPermalink }}" tabindex="-1">{{ partial "cover.html" $feature }}</a>
     <div>
-      <p class="kicker">Featured {{ $feature.CurrentSection.Params.singular }}</p>
       <h2><a href="{{ $feature.RelPermalink }}">{{ $feature.Title }}</a></h2>
       <p class="dek">{{ $feature.Params.dek }}</p>
-      <p class="byline">{{ delimit $feature.Params.authors ", " " & " }} · {{ $feature.Date.Format "January 2, 2006" }}</p>
+      <p class="byline">{{ $feature.CurrentSection.Params.singular }} · {{ delimit $feature.Params.authors ", " " & " }} · {{ $feature.Date.Format "January 2, 2006" }}</p>
     </div>
   </section>
 
-  <h2 class="section-label"><span>Latest</span><span>{{ site.Params.tagline }}</span></h2>
+  <h2 class="section-label">Latest</h2>
   <div class="grid">
     {{ range first 6 (complement (slice $feature) $pages) }}{{ partial "card.html" . }}{{ end }}
   </div>
@@ -23,7 +22,6 @@
     <a class="type t-{{ .Section }}" href="{{ .RelPermalink }}">
       <h3>{{ .Title }}</h3>
       <p>{{ .Description }}</p>
-      <span class="count">{{ len .Pages }} {{ cond (eq (len .Pages) 1) "piece" "pieces" }} →</span>
     </a>
     {{ end }}
   </nav>

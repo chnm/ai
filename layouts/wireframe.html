@@ -22,7 +22,8 @@
   [data-n]::before { content: attr(data-n); position: absolute; top: -9px; left: -9px; width: 20px; height: 20px; display: grid; place-items: center; border-radius: 50%; background: var(--ink); color: var(--paper); font: 600 .65rem var(--mono); }
   .b.dark[data-n]::before, .b.accent[data-n]::before { background: var(--paper); color: var(--ink); }
   .cols { display: grid; gap: 8px; }
-  .c2 { grid-template-columns: 1.25fr 1fr; } .c3 { grid-template-columns: repeat(3, 1fr); } .c4 { grid-template-columns: repeat(4, 1fr); } .c12 { grid-template-columns: 1fr 2fr; }
+  .c2 { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); } .c3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } .c4 { grid-template-columns: repeat(4, minmax(0, 1fr)); } .c12 { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); }
+  .b { overflow-wrap: anywhere; }
   .narrow { width: 62%; margin: 0 auto; display: grid; gap: 8px; }
   .with-margin { display: grid; grid-template-columns: 62% 1fr; gap: 8px; margin-left: 19%; }
   .h-hero { min-height: 9rem; } .h-cover { min-height: 4.5rem; } .h-type { min-height: 4rem; } .h-banner { min-height: 6rem; }
@@ -44,7 +45,8 @@
   .type-specimen .big { font-size: 3rem; line-height: 1; margin: .5rem 0; }
   .wf table { width: 100%; border-collapse: collapse; font-size: .95rem; }
   .wf th, .wf td { text-align: left; vertical-align: top; padding: .55rem .75rem .55rem 0; border-bottom: 1px solid #d8d1c3; }
-  .wf th { font: 500 .75rem var(--mono); text-transform: uppercase; letter-spacing: .08em; }
+  .wf th { font-weight: 600; }
+  .wf .spec-label { display: block; font-size: .9rem; color: var(--muted); }
   .table-scroll { overflow-x: auto; }
 </style>
 
@@ -66,14 +68,14 @@
       </div>
       <div class="cols c2">
         <div class="b accent t-essays h-hero" data-n="2"><strong>Cover art</strong>5:4, generative</div>
-        <div class="b white"><span>FEATURED ESSAY</span><strong style="font-size:1.1rem">Headline</strong><div class="line"></div><div class="line s"></div><span>Byline · Date</span></div>
+        <div class="b white"><strong style="font-size:1.1rem">Headline</strong><div class="line"></div><div class="line s"></div><span>Essay · Author · Date</span></div>
       </div>
       <div class="b white" data-n="3"><strong>Latest</strong> section label</div>
       <div class="cols c3">
         {{ range slice "essays" "tutorials" "templates" }}<div class="cols" style="gap:4px"><div class="b accent t-{{ . }} h-cover"></div><div class="line s"></div><div class="line"></div><div class="line s"></div></div>{{ end }}
       </div>
       <div class="cols c4" data-n="4" style="position:relative">
-        {{ range slice "essays" "tutorials" "templates" "field-notes" }}<div class="b accent t-{{ . }} h-type"><strong>{{ humanize . | title }}</strong>description · count</div>{{ end }}
+        {{ range slice "essays" "tutorials" "templates" "field-notes" }}<div class="b accent t-{{ . }} h-type"><strong>{{ humanize . | title }}</strong>description</div>{{ end }}
       </div>
       <div class="cols c12">
         <div class="b white" data-n="5"><strong>Welcome</strong></div>
@@ -86,7 +88,7 @@
       </div>
     </div>
     <ol class="wf-notes">
-      <li><strong>Masthead.</strong> Wordmark and RRCHNM credit on the left, with nav links underlined in each type's color.</li>
+      <li><strong>Masthead.</strong> Wordmark and RRCHNM credit on the left, with nav links underlined in a thin rule in each type's color.</li>
       <li><strong>Hero.</strong> The piece with <code>featured: true</code>, or the newest piece if none is featured.</li>
       <li><strong>Latest.</strong> The six newest pieces of any type in a responsive card grid.</li>
       <li><strong>Browse by type.</strong> Four color blocks linking to the section pages: 4 across, 2×2 on tablets, stacked on phones.</li>
@@ -101,15 +103,15 @@
     <div class="wf-frame t-tutorials">
       <div class="bar"><i></i><i></i><i></i></div>
       <div class="b white"><strong>Masthead</strong></div>
-      <div class="b accent h-banner" data-n="1"><span>PROVENANCE</span><strong style="font-size:1.3rem">Tutorials</strong>Section description</div>
+      <div class="b accent h-banner" data-n="1"><strong style="font-size:1.3rem">Tutorials</strong>Section description</div>
       <div class="cols c3" data-n="2">
         {{ range seq 6 }}<div class="cols" style="gap:4px"><div class="b accent h-cover"></div><div class="line s"></div><div class="line"></div></div>{{ end }}
       </div>
       <div class="b dark"><strong>Footer</strong></div>
     </div>
     <ol class="wf-notes">
-      <li><strong>Banner.</strong> A gradient in the type's color, with a halftone texture and an oversized type glyph.</li>
-      <li><strong>Card grid.</strong> Every piece in the section, newest first. Each card has a cover, kicker, title, dek, and byline.</li>
+      <li><strong>Banner.</strong> A gradient in the type's color with a faint oversized type glyph.</li>
+      <li><strong>Card grid.</strong> Every piece in the section, newest first. Each card has a cover, title, dek, and a byline that names the type.</li>
     </ol>
   </div>
 
@@ -119,14 +121,14 @@
     <div class="wf-frame t-essays">
       <div class="bar"><i></i><i></i><i></i></div>
       <div class="b white"><strong>Masthead</strong></div>
-      <div class="b accent h-banner" data-n="1"><span>ESSAY</span><strong style="font-size:1.3rem">Headline</strong>Dek<span>Author (iD) · Date · DOI · [Time · Level · Tools]</span></div>
+      <div class="b accent h-banner" data-n="1"><strong style="font-size:1.3rem">Headline</strong>Dek<span>Essay · Author (iD) · Date · DOI · [Time · Level · Tools]</span></div>
       <div class="with-margin">
         <div class="b white" data-n="2"><strong>Drop cap + body text</strong><div class="line"></div><div class="line"></div><div class="line s"></div></div>
         <div class="b" data-n="3">Sidenote</div>
       </div>
       <div class="narrow">
         <div class="b white" data-n="4"><strong style="color:var(--accent)">“Pull quote”</strong></div>
-        <div class="b white" data-n="5"><strong>PROMPT · Copy</strong><div class="line"></div><div class="line s"></div></div>
+        <div class="b white" data-n="5"><strong>Prompt title · Copy</strong><div class="line"></div><div class="line s"></div></div>
         <div class="b" data-n="6"><strong>Cite this</strong>Chicago citation, DOI if present</div>
       </div>
       <div class="cols c3" data-n="7">
@@ -160,9 +162,9 @@
 
   <h2 class="section-label"><span>5 · Typography</span><span>Google Fonts</span></h2>
   <div class="type-specimen">
-    <div><span class="kicker">Display · Fraunces</span><p class="big" style="font-family:var(--display);font-weight:800">Provenance</p><p class="big" style="font-family:var(--display);font-weight:900;font-style:italic">Essays</p></div>
-    <div><span class="kicker">Body · Source Serif 4</span><p style="font-size:1.25rem">Historians ask where a source came from, who made it, and why.</p><p class="dek">Italic for decks and standfirsts.</p></div>
-    <div><span class="kicker">Labels and prompts · IBM Plex Mono</span><p style="font:1rem/1.5 var(--mono)">KICKER · BYLINE · DOI<br>Transcribe this page exactly as written.</p></div>
+    <div><span class="spec-label">Display: Fraunces</span><p class="big" style="font-family:var(--display);font-weight:800">Provenance</p><p class="big" style="font-family:var(--display);font-weight:900;font-style:italic">Essays</p></div>
+    <div><span class="spec-label">Body, bylines, and labels: Source Serif 4</span><p style="font-size:1.25rem">Historians ask where a source came from, who made it, and why.</p><p class="dek">Italic for decks and standfirsts.</p></div>
+    <div><span class="spec-label">Prompts and code: IBM Plex Mono</span><p style="font:1rem/1.5 var(--mono)">Transcribe this page exactly as written.</p></div>
   </div>
 
   <h2 class="section-label"><span>6 · Front matter</span><span><code>archetypes/default.md</code></span></h2>

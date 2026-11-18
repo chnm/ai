@@ -2,11 +2,11 @@
 {{ $piece := in site.Params.mainSections .Section }}
 <article>
   <header class="banner">
-    {{ with .CurrentSection.Params.singular }}<p class="kicker"><a href="{{ $.CurrentSection.RelPermalink }}">{{ . }}</a></p>{{ end }}
     <h1>{{ .Title }}</h1>
     {{ with .Params.dek }}<p class="dek">{{ . }}</p>{{ end }}
     {{ if $piece }}
     <p class="meta">
+      <span><a href="{{ .CurrentSection.RelPermalink }}">{{ .CurrentSection.Params.singular }}</a></span>
       <span>{{ $n := len .Params.authors }}{{ range $i, $a := .Params.authors }}{{ if $i }}{{ if eq (add $i 1) $n }} &amp; {{ else }}, {{ end }}{{ end }}{{ $a }}{{ with (index hugo.Data.authors $a).orcid }} <a class="orcid" href="https://orcid.org/{{ . }}" aria-label="ORCID profile for {{ $a }}" title="ORCID {{ . }}">iD</a>{{ end }}{{ end }}</span>
       <span>{{ .Date.Format "January 2, 2006" }}</span>
       {{ with .Params.time }}<span>Time: {{ . }}</span>{{ end }}
@@ -26,7 +26,7 @@
 </article>
 {{ with complement (slice .) .CurrentSection.RegularPages | first 3 }}{{ if $piece }}
 <div class="wrap">
-  <h2 class="section-label"><span>More {{ $.CurrentSection.Title }}</span></h2>
+  <h2 class="section-label">More {{ lower $.CurrentSection.Title }}</h2>
   <div class="grid">{{ range . }}{{ partial "card.html" . }}{{ end }}</div>
 </div>
 {{ end }}{{ end }}

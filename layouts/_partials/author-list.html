@@ -1,9 +1,12 @@
-{{/* Every author, alphabetically, linking to their page. Used on /authors/ and the About page. */}}
+{{/* Every author, alphabetically, with headshot, linking to their page. Used on /authors/ and the About page. */}}
 <ul class="works">
   {{ range site.Taxonomies.authors.Alphabetical }}
-  <li>
-    <a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a>
-    <span class="byline">{{ .Count }} {{ cond (eq .Count 1) "piece" "pieces" }}</span>
+  <li class="person">
+    {{ with (index hugo.Data.authors .Page.Title).photo }}<img class="avatar" src="{{ . | relURL }}" alt="" width="56" height="56" loading="lazy">{{ else }}<span class="avatar" aria-hidden="true"></span>{{ end }}
+    <div>
+      <a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a>
+      <span class="byline">{{ .Count }} {{ cond (eq .Count 1) "piece" "pieces" }}</span>
+    </div>
   </li>
   {{ end }}
 </ul>

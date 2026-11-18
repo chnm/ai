@@ -12,7 +12,7 @@
     </article>
     <div class="latest">
       <h2 class="section-label">Latest</h2>
-      {{ range first 3 (complement (slice $feature) $pages) }}
+      {{ range first 4 (complement (slice $feature) $pages) }}
       <article class="mini t-{{ .Section }}">
         <a href="{{ .RelPermalink }}" tabindex="-1">{{ partial "cover.html" . }}</a>
         <div>

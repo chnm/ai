@@ -1,27 +1,35 @@
 # Optional author details, keyed by the name used in a piece's `authors` list.
 # Every name in an `authors` list gets a page at /authors/<name>/ automatically;
-# entries here only add a bio and ORCID iD. All people below are fictional placeholders.
+# entries here only add a bio, ORCID iD, and headshot (`photo`: a URL or a path under static/).
+# All people below except Jason A. Heppler are fictional placeholders; photos are Picsum previews.
 # 0000-0002-1825-0097 is ORCID's official example iD.
 
 ["Mara Ellison"]
 bio = "Mara Ellison is a historian of information and scholarly communication."
+photo = "https://picsum.photos/seed/mara-ellison/300/300"
 orcid = "0000-0002-1825-0097"
 
 ["Desmond Achterberg"]
 bio = "Desmond Achterberg teaches graduate methods and writes about archives and reading."
+photo = "https://picsum.photos/seed/desmond-achterberg/300/300"
 
 ["Priya Raman"]
 bio = "Priya Raman works on nineteenth-century correspondence and digital editions."
+photo = "https://picsum.photos/seed/priya-raman/300/300"
 
 ["Tom Velasquez"]
 bio = "Tom Velasquez builds research pipelines for digitized newspapers."
+photo = "https://picsum.photos/seed/tom-velasquez/300/300"
 
 ["Lena Okafor"]
 bio = "Lena Okafor is a photo historian and museum curator."
+photo = "https://picsum.photos/seed/lena-okafor/300/300"
 
 ["Provenance Editors"]
 bio = "The editorial team at the Roy Rosenzweig Center for History and New Media."
+photo = "https://picsum.photos/seed/provenance-editors/300/300"
 
 ["Jason A. Heppler"]
 bio = "Jason A. Heppler is the senior developer-scholar at the Roy Rosenzweig Center for History and New Media"
+photo = "https://picsum.photos/seed/jason-a-heppler/300/300"
 orcid = "0000-0002-1825-0097"

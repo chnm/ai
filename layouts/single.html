@@ -7,14 +7,17 @@
   </header>
   {{ if $piece }}
   <aside class="post-meta">
-    <p><a href="{{ .CurrentSection.RelPermalink }}">{{ .CurrentSection.Params.singular }}</a></p>
     <p class="authors">{{ $n := len .Params.authors }}{{ range $i, $a := .Params.authors }}{{ if $i }}{{ if eq (add $i 1) $n }} &amp; {{ else }}, {{ end }}{{ end }}{{ with site.GetPage (printf "/authors/%s" (urlize $a)) }}<a href="{{ .RelPermalink }}">{{ $a }}</a>{{ else }}{{ $a }}{{ end }}{{ with (index hugo.Data.authors $a).orcid }} <a class="orcid" href="https://orcid.org/{{ . }}" aria-label="ORCID profile for {{ $a }}" title="ORCID {{ . }}">iD</a>{{ end }}{{ end }}</p>
-    <p>{{ .Date.Format "January 2, 2006" }}</p>
-    {{ with .Params.doi }}<p>DOI <a href="https://doi.org/{{ . }}">{{ . }}</a></p>{{ end }}
-    {{ with .Params.time }}<p>Time: {{ . }}</p>{{ end }}
-    {{ with .Params.level }}<p>Level: {{ . }}</p>{{ end }}
-    {{ with .Params.tools }}<p>Tools: {{ delimit . ", " }}</p>{{ end }}
+    <p class="date">{{ .Date.Format "January 2, 2006" }}</p>
+    {{ range .Params.authors }}{{ with (index hugo.Data.authors .).bio }}<p class="bio">{{ . }}</p>{{ end }}{{ end }}
   </aside>
+  {{ end }}
+  {{ if or .Params.time .Params.level .Params.tools }}
+  <p class="tutorial-info">
+    {{ with .Params.time }}<span>Time: {{ . }}</span>{{ end }}
+    {{ with .Params.level }}<span>Level: {{ . }}</span>{{ end }}
+    {{ with .Params.tools }}<span>Tools: {{ delimit . ", " }}</span>{{ end }}
+  </p>
   {{ end }}
   <div class="prose">{{ partial "sidenotes.html" . }}</div>
   {{ if $piece }}
@@ -22,14 +25,6 @@
     <h2>Cite this</h2>
     <p>{{ delimit .Params.authors ", " " and " }}, “{{ .Title }},” <em>{{ site.Title }}</em>, {{ .Date.Format "January 2, 2006" }}, {{ with .Params.doi }}https://doi.org/{{ . }}{{ else }}{{ $.Permalink }}{{ end }}.</p>
   </aside>
-  {{ $page := . }}
-  {{ range .Params.authors }}{{ $name := . }}{{ with site.GetPage (printf "/authors/%s" (urlize $name)) }}{{ $term := . }}
-  {{ with complement (slice $page) .Pages }}
-  <aside class="more-by">
-    <h2>More by <a href="{{ $term.RelPermalink }}">{{ $name }}</a></h2>
-    {{ partial "works.html" (first 5 .) }}
-  </aside>
-  {{ end }}{{ end }}{{ end }}
   {{ end }}
 </article>
 {{ with complement (slice .) .CurrentSection.RegularPages | first 3 }}{{ if $piece }}

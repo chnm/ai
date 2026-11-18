@@ -124,7 +124,7 @@
       <div class="bar"><i></i><i></i><i></i></div>
       <div class="b white"><strong>Masthead</strong></div>
       <div class="cols" style="grid-template-columns:minmax(0,1fr) minmax(0,2.4fr) minmax(0,1fr);gap:8px">
-        <div class="b" data-n="2" style="align-self:start;border-top:2px solid var(--accent)">Essay<br>Author (iD)<br>Date<br>DOI<br>[Time, Level, Tools]</div>
+        <div class="b" data-n="2" style="align-self:start;border-top:2px solid var(--accent)">Author (iD)<br>Date<br>Bio</div>
         <div style="display:grid;gap:8px">
           <div class="b white" data-n="1"><strong style="font-size:1.3rem">Headline</strong><span style="font-style:italic">Lede</span></div>
           <div class="b white" data-n="3"><strong>Drop cap + body text</strong><div class="line"></div><div class="line"></div><div class="line s"></div></div>
@@ -143,12 +143,12 @@
     </div>
     <ol class="wf-notes">
       <li><strong>Title and lede.</strong> No banner or cover image; the headline and italic lede sit on the paper background.</li>
-      <li><strong>Metadata.</strong> Type, authors (ORCID via <code>data/authors.toml</code>), date, DOI, and tutorial details sit in the left margin at 1300px and up, and as a row under the lede on smaller screens.</li>
+      <li><strong>Byline.</strong> Authors (linked, with ORCID), date, and each author's bio from <code>data/authors.toml</code>. Left margin at 1300px and up; under the lede on smaller screens.</li>
       <li><strong>Reading column.</strong> 38rem wide, with a drop cap in the type color.</li>
       <li><strong>Sidenotes.</strong> <code>{{ "{{< sidenote >}}" }}</code> places a note in the right margin at 1300px and up, and inline below the paragraph on smaller screens. Ordinary Markdown footnotes (<code>[^1]</code>) also appear in the margin at 1300px and up, and stay in the numbered list at the end of the piece.</li>
       <li><strong>Quotations.</strong> Markdown <code>&gt;</code> blockquotes are body-size with a thin rule in the type color. <code>{{ "{{< pullquote >}}" }}</code> sets a large display quote, and <code>{{ `{{< epigraph source="…" >}}` }}</code> sets an indented opening quotation with an optional source.</li>
       <li><strong>Prompt box.</strong> <code>{{ "{{< prompt title=\"…\" >}}" }}</code> renders a copyable block, used mostly in Templates.</li>
-      <li><strong>Cite this.</strong> A generated Chicago citation. Highwire <code>citation_*</code> meta tags let Zotero save the piece as a journal article.</li>
+      <li><strong>Cite this.</strong> Every piece ends with a generated Chicago citation, which includes the DOI when there is one. (Tutorials also get a time, level, and tools line just above the first paragraph.) Highwire <code>citation_*</code> meta tags let Zotero save the piece as a journal article.</li>
       <li><strong>More in this section.</strong> Up to three other pieces of the same type, below the article.</li>
     </ol>
   </div>
@@ -180,7 +180,7 @@
     <tbody>
       <tr><td><code>title</code>, <code>date</code></td><td>Yes</td><td>Everywhere</td></tr>
       <tr><td><code>dek</code></td><td>Recommended</td><td>Cards, header, meta description</td></tr>
-      <tr><td><code>authors</code></td><td>Yes</td><td>Bylines, citation, <code>citation_author</code> tags, and an author page at <code>/authors/&lt;name&gt;/</code>. Bios and ORCID iDs come from <code>data/authors.toml</code>.</td></tr>
+      <tr><td><code>authors</code></td><td>Yes</td><td>Bylines, citation, <code>citation_author</code> tags, and an author page at <code>/authors/&lt;name&gt;/</code>. Bios, ORCID iDs, and headshots (<code>photo</code>) come from <code>data/authors.toml</code>.</td></tr>
       <tr><td><code>doi</code></td><td>No</td><td>Header link, citation URL, <code>citation_doi</code></td></tr>
       <tr><td><code>featured</code></td><td>No</td><td>Home page hero</td></tr>
       <tr><td><code>image</code></td><td>No</td><td>Replaces the generative cover art</td></tr>

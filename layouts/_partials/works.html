@@ -1,9 +1,12 @@
-{{/* A compact list of pieces. Context: a page collection. Used on author pages and under articles. */}}
+{{/* A compact list of pieces with thumbnails. Context: a page collection. Used on author pages. */}}
 <ul class="works">
   {{ range . }}
-  <li class="t-{{ .Section }}">
-    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-    <span class="byline">{{ .CurrentSection.Params.singular }} · {{ .Date.Format "January 2, 2006" }}</span>
+  <li class="mini t-{{ .Section }}">
+    <a href="{{ .RelPermalink }}" tabindex="-1">{{ partial "cover.html" . }}</a>
+    <div>
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+      <span class="byline">{{ .CurrentSection.Params.singular }} · {{ .Date.Format "January 2, 2006" }}</span>
+    </div>
   </li>
   {{ end }}
 </ul>
